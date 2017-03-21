@@ -11,8 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('admin_template');
-});
+//Route::get('/', function () {
+//    return view('admin_template');
+//});
+
+Route::get('/', 'AvisoController@index');
 
 Route::get('test', 'TestController@index');
+Auth::routes();
+
+Route::get('/home', 'AvisoController@index');

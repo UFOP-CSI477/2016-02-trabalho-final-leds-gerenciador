@@ -1,5 +1,7 @@
 @extends('admin_template')
-
+<?php 
+    View::share('page_title', 'Teste'); 
+?>
 @section('content')
     <div class='row'>
         <div class='col-md-6'>
