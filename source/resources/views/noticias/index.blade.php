@@ -5,40 +5,33 @@
 @section('content')
     <div class='row'>
         
-        <div class="col-md-6">
-          <!-- Box Comment -->
-          <div class="box box-widget">
-            <div class="box-header with-border">
-              <div class="user-block">
-                <img class="img-circle" src="../dist/img/user1-128x128.jpg" alt="User Image">
-                <span class="username"><a href="#">Jonathan Burke Jr.</a></span>
-                <span class="description">Shared publicly - 7:30 PM Today</span>
+        @foreach($avisos as $a)
+          <div class="col-md-6">
+            <!-- Box Comment -->
+            <div class="box box-widget">
+              <div class="box-header with-border">
+                <div class="user-block">
+                  <img class="img-circle" src="/images/{{$a->user()->value('imagem')}}" alt="User Image">
+                  <span class="username"><a href="#">{{$a->titulo}}</a></span>
+                  <span class="description">Postado por {{$a->user()->value('name')}} </span>
+                </div>
+                <!-- /.user-block -->
+                <div class="box-tools">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                  </button>
+                </div>
+                <!-- /.box-tools -->
               </div>
-              <!-- /.user-block -->
-              <div class="box-tools">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
+              <!-- /.box-header -->
+              <div class="box-body">
+                <!-- post text -->
+                {{$a->descricao}}
               </div>
-              <!-- /.box-tools -->
+              <!-- /.box-footer -->
             </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <!-- post text -->
-              <p>Far far away, behind the word mountains, far from the
-                countries Vokalia and Consonantia, there live the blind
-                texts. Separated they live in Bookmarksgrove right at</p>
-
-              <p>the coast of the Semantics, a large language ocean.
-                A small river named Duden flows by their place and supplies
-                it with the necessary regelialia. It is a paradisematic
-                country, in which roasted parts of sentences fly into
-                your mouth.</p>
-            </div>
-            <!-- /.box-footer -->
+            <!-- /.box -->
           </div>
-          <!-- /.box -->
-        </div>
-        
+        @endforeach
 
 
     </div><!-- /.row -->

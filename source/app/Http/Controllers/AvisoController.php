@@ -19,7 +19,8 @@ class AvisoController extends Controller
 
     public function index()
     {
-        return view('noticias.index');
+        $avisos = Aviso::all();
+        return view('noticias.index')->with('avisos', $avisos);
     }
 
     /**

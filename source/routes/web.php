@@ -17,6 +17,8 @@
 
 Route::get('/', 'AvisoController@index');
 
+Route::get('/perfil', 'UserController@index');
+
 Route::get('test', 'TestController@index');
 Auth::routes();
 

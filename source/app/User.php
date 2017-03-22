@@ -34,4 +34,8 @@ class User extends Authenticatable
     public function aluno(){
         return $this->belongsTo('App\Aluno');
     }
+
+    public function aviso(){
+        return $this->belongsTo('App\Aviso');
+    }
 }

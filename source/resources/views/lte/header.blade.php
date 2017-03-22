@@ -2,7 +2,10 @@
 <header class="main-header">
 
     <!-- Logo -->
-    <a href="index2.html" class="logo"><b>LEDS</b></a>
+    <a href="/" class="logo">
+        <span class="logo-mini"><b>L</b>DS</span>
+        <span class="logo-lg"><b>LEDS</b></span>
+    </a>
     <!-- <img src="/images/leds.png" class="img-circle" width="50" height="50"/> -->
 
     <!-- Header Navbar -->

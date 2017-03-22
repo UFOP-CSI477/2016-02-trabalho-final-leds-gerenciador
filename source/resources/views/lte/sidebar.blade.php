@@ -32,9 +32,9 @@
             <li class="header">Menu</li>
             <!-- Optionally, you can add icons to the links -->
             <li><a href="/"><i class="fa fa-newspaper-o"></i><span>Notícias</span></a></li>
-            <li><a href="/"><i class="fa fa-user"></i><span>Perfil</span></a></li>
+            <li><a href="/perfil"><i class="fa fa-user"></i><span>Perfil</span></a></li>
             <li><a href="/"><i class="fa fa-users"></i><span>Membros</span></a></li>
-            <li><a href="/"><i class="fa fa-files-o"></i><span>Projetos</span></a></li>
+            <li><a href="/projetos"><i class="fa fa-files-o"></i><span>Projetos</span></a></li>
             <li><a href="/"><i class="fa fa-book"></i><span>Biblioteca</span></a></li>
             <li><a href="/"><i class="fa fa-github-alt"></i><span>GitHub</span></a></li>
             <li><a href="/"><i class="fa fa-institution"></i><span>Lattes</span></a></li>
