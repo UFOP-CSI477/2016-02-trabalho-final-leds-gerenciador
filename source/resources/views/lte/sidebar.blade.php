@@ -16,7 +16,7 @@
             </div>
         </div>
 
-        <!-- search form (Optional) 
+        <!-- search form (Optional)
         <form action="#" method="get" class="sidebar-form">
             <div class="input-group">
                 <input type="text" name="q" class="form-control" placeholder="Search..."/>
@@ -36,7 +36,7 @@
             <li><a href="/"><i class="fa fa-users"></i><span>Membros</span></a></li>
             <li><a href="/projetos"><i class="fa fa-files-o"></i><span>Projetos</span></a></li>
             <li><a href="/"><i class="fa fa-book"></i><span>Biblioteca</span></a></li>
-            <li><a href="/"><i class="fa fa-github-alt"></i><span>GitHub</span></a></li>
+            <li><a href="/referencias"><i class="fa fa-github-alt"></i><span>GitHub</span></a></li>
             <li><a href="/"><i class="fa fa-institution"></i><span>Lattes</span></a></li>
             <li class="treeview">
                 <a href="#"><i class="fa  fa-plus"></i><span>Adicionar</span>
@@ -45,14 +45,16 @@
                 </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="../../index.html"><i class="fa fa-circle-o"></i> Membro</a></li>
-                    <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Projeto</a></li>
+                    @if (Auth::user()->type > 1)
+                      <li><a href="{{url('membro')}}"><i class="fa fa-circle-o"></i> Membro</a></li>
+                      <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Projeto</a></li>
+                    @endif
                     <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Livros</a></li>
                     <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Notícia</a></li>
                 </ul>
             </li>
             <li><a href="{{ url('/test') }}"><span>Pagina teste</span></a></li>
-           
+
         </ul><!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->

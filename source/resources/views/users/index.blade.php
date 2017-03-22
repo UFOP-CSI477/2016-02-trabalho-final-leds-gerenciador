@@ -1,10 +1,10 @@
 @extends('admin_template')
-<?php 
-    View::share('page_title', 'Perfil'); 
+<?php
+    View::share('page_title', 'Perfil');
 ?>
 @section('content')
     <div class='row'>
-        
+
         <div class="col-md-3">
 
           <!-- Profile Image -->
@@ -299,7 +299,6 @@
                     </div>
                   </div>
                   @if(Auth::user()->type == 1)
-
                     <div class="form-group">
                       <label for="inputMatricula" class="col-sm-2 control-label">Matrícula</label>
 
@@ -368,7 +367,7 @@
           <!-- /.nav-tabs-custom -->
         </div>
         <!-- /.col -->
-        
+
 
 
     </div><!-- /.row -->

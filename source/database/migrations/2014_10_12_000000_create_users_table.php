@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Database\Migrations\Migration;
 
 class CreateUsersTable extends Migration
@@ -24,6 +25,18 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+        // Insert some stuff
+        DB::table('users')->insert(
+          array(
+          'id' => '1',
+          'name' => 'admin',
+          'email' => 'admin@admin.com',
+          'type' => '3',
+          'password' => bcrypt('admin')
+
+      )
+  );
     }
 
     /**

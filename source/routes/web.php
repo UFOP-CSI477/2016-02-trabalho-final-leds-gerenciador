@@ -14,11 +14,13 @@
 //Route::get('/', function () {
 //    return view('admin_template');
 //});
-
+Route::get('/referencias', function () {
+    return view('referencias.index');
+});
 Route::get('/', 'AvisoController@index');
 
 Route::get('/perfil', 'UserController@index');
-
+Route::resource('membro', 'MembroController');
 Route::get('test', 'TestController@index');
 Auth::routes();
 
