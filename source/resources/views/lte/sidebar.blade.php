@@ -46,7 +46,7 @@
                 </a>
                 <ul class="treeview-menu">
                     @if (Auth::user()->type > 1)
-                      <li><a href="{{url('membro')}}"><i class="fa fa-circle-o"></i> Membro</a></li>
+                      <li><a href="{{url('membro/create')}}"><i class="fa fa-circle-o"></i> Membro</a></li>
                       <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Projeto</a></li>
                     @endif
                     <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Livros</a></li>
