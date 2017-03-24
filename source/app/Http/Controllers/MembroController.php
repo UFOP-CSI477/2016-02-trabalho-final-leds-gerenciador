@@ -53,8 +53,12 @@ protected function validator(array $data)
  public function store(Request $request)
  {
    $dados = ($request->all());
-   dd($dados);
-   User::create($request->all());
-   return redirect('/produtos');
+   if($dados['name'] == '' || $dados['email'] == '' || $dados['password'] == ''){
+        session()->flash('error', 'Favor preenxer todos os campos');
+     return redirect('/membro/create');
+   }
+   $dados["password"] = bcrypt($dados["password"]);
+   User::create($dados);
+   return redirect('/');
  }
 }

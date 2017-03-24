@@ -31,13 +31,24 @@
         <ul class="sidebar-menu">
             <li class="header">Menu</li>
             <!-- Optionally, you can add icons to the links -->
-            <li><a href="/"><i class="fa fa-newspaper-o"></i><span>Notícias</span></a></li>
+            <li><a href="/noticias"><i class="fa fa-newspaper-o"></i><span>Notícias</span></a></li>
             <li><a href="/perfil"><i class="fa fa-user"></i><span>Perfil</span></a></li>
             <li><a href="/"><i class="fa fa-users"></i><span>Membros</span></a></li>
             <li><a href="/projetos"><i class="fa fa-files-o"></i><span>Projetos</span></a></li>
             <li><a href="/"><i class="fa fa-book"></i><span>Biblioteca</span></a></li>
-            <li><a href="/referencias"><i class="fa fa-github-alt"></i><span>GitHub</span></a></li>
-            <li><a href="/"><i class="fa fa-institution"></i><span>Lattes</span></a></li>
+
+
+<!-- Aqui basta colocar para recuperar o link do Lattes caso aluno ou caso professor -->
+<!-- Se o lattes estiver vazio a gente pode desativar esse botao -->
+
+            <li><a href=" @if(Auth::user()->type ==  2)
+                {{ url('/perfil') }}
+                @endif"
+              ><i class="fa fa-institution"></i><span>Lattes</span></a></li>
+
+
+
+            <li><a href="/referencias"><i class="fa fa-github-alt"></i><span>Referencias</span></a></li>
             <li class="treeview">
                 <a href="#"><i class="fa  fa-plus"></i><span>Adicionar</span>
                 <span class="pull-right-container">
@@ -53,7 +64,6 @@
                     <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Notícia</a></li>
                 </ul>
             </li>
-            <li><a href="{{ url('/test') }}"><span>Pagina teste</span></a></li>
 
         </ul><!-- /.sidebar-menu -->
     </section>

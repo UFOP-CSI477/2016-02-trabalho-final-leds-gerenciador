@@ -24,4 +24,5 @@ Route::resource('membro', 'MembroController');
 Route::get('test', 'TestController@index');
 Auth::routes();
 
+Route::get('/noticias', 'AvisoController@index');
 Route::get('/home', 'AvisoController@index');
