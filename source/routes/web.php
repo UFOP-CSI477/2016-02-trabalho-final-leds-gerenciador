@@ -18,11 +18,20 @@ Route::get('/referencias', function () {
     return view('referencias.index');
 });
 Route::get('/', 'AvisoController@index');
-
+Route::resource('/equipe', 'EquipeController');
 Route::get('/perfil', 'UserController@index');
 Route::resource('membro', 'MembroController');
+Route::resource('livro', 'LivroController');
+Route::resource('biblioteca', 'BibliotecaController');
 Route::get('test', 'TestController@index');
 Auth::routes();
 
 Route::get('/noticias', 'AvisoController@index');
 Route::get('/home', 'AvisoController@index');
+Route::get('devolver/{id}', [
+    'uses' => 'BibliotecaController@devolver'
+]);
+
+Route::get('alugar/{id}', [
+    'uses' => 'BibliotecaController@alugar'
+]);

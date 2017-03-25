@@ -33,9 +33,9 @@
             <!-- Optionally, you can add icons to the links -->
             <li><a href="/noticias"><i class="fa fa-newspaper-o"></i><span>Notícias</span></a></li>
             <li><a href="/perfil"><i class="fa fa-user"></i><span>Perfil</span></a></li>
-            <li><a href="/"><i class="fa fa-users"></i><span>Membros</span></a></li>
+            <li><a href="/equipe"><i class="fa fa-users"></i><span>Membros</span></a></li>
             <li><a href="/projetos"><i class="fa fa-files-o"></i><span>Projetos</span></a></li>
-            <li><a href="/"><i class="fa fa-book"></i><span>Biblioteca</span></a></li>
+            <li><a href="/biblioteca"><i class="fa fa-book"></i><span>Biblioteca</span></a></li>
 
 
 <!-- Aqui basta colocar para recuperar o link do Lattes caso aluno ou caso professor -->
@@ -60,7 +60,7 @@
                       <li><a href="{{url('membro/create')}}"><i class="fa fa-circle-o"></i> Membro</a></li>
                       <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Projeto</a></li>
                     @endif
-                    <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Livros</a></li>
+                    <li><a href="{{url('livro/create')}}"><i class="fa fa-circle-o"></i> Livros</a></li>
                     <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Notícia</a></li>
                 </ul>
             </li>

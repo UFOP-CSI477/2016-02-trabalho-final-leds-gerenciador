@@ -16,7 +16,7 @@ class MembroController extends Controller
  * @return void
  */
  public function __construct(){
-     //$this->middleware('auth', ['except' => 'index']);
+
      $this->middleware('auth');
  }
 
