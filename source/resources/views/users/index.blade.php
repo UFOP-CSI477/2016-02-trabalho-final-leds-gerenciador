@@ -2,6 +2,7 @@
 <?php
     View::share('page_title', 'Perfil');
 ?>
+
 @section('content')
     <div class='row'>
 
@@ -10,11 +11,11 @@
           <!-- Profile Image -->
           <div class="box box-primary">
             <div class="box-body box-profile">
-              <img class="profile-user-img img-responsive img-circle" src="/images/{{Auth::user()->imagem}}" alt="User profile picture">
+              <img class="profile-user-img img-responsive img-circle" src="/images/{{ $user->imagem}}" alt="User profile picture">
 
-              <h3 class="profile-username text-center">{{Auth::user()->name}}</h3>
+              <h3 class="profile-username text-center">{{$user->name}}</h3>
 
-              <p class="text-muted text-center">Software Engineer</p>
+              <p class="text-muted text-center"><?php if($user->type == 1){ ?> {{ $user->aluno()->value('curso') }} <?php }else{ ?> {{ $user->professor()->value('area') }} <?php } ?></p>
 
             </div>
             <!-- /.box-body -->
@@ -34,6 +35,18 @@
                 B.S. in Computer Science from the University of Tennessee at Knoxville
               </p>
 
+              @if($user->type != 1)
+              <hr>
+
+              <strong><i class="fa fa-book margin-r-5"></i> Departamento</strong>
+
+              <p class="text-muted">{{$user->professor()->value('departamento')}}</p>
+
+              @endif
+              <hr>
+
+              <strong><i class="fa fa-book margin-r-5"></i><a href=http://{{$user->lattes}}> Lattes</a></strong>
+
               <hr>
 
               <strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
@@ -42,21 +55,6 @@
 
               <hr>
 
-              <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
-
-              <p>
-                <span class="label label-danger">UI Design</span>
-                <span class="label label-success">Coding</span>
-                <span class="label label-info">Javascript</span>
-                <span class="label label-warning">PHP</span>
-                <span class="label label-primary">Node.js</span>
-              </p>
-
-              <hr>
-
-              <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
-
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
             </div>
             <!-- /.box-body -->
           </div>
@@ -64,11 +62,20 @@
         </div>
         <!-- /.col -->
         <div class="col-md-9">
+          @if (count($errors) > 0)
+              <div class="alert alert-danger">
+                  <ul>
+                      @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                      @endforeach
+                  </ul>
+              </div>
+          @endif
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-              <li class="active"><a href="#activity" data-toggle="tab" aria-expanded="true">Activity</a></li>
-              <li class=""><a href="#timeline" data-toggle="tab" aria-expanded="false">Timeline</a></li>
+              <li class="active"><a href="#activity" data-toggle="tab" aria-expanded="true">Atividades</a></li>
               <li class=""><a href="#settings" data-toggle="tab" aria-expanded="false">Editar</a></li>
+              <li class=""><a href="#password" data-toggle="tab" aria-expanded="false">Redefinir Senha</a></li>
             </ul>
             <div class="tab-content">
               <div class="tab-pane active" id="activity">
@@ -185,131 +192,40 @@
                 </div>
                 <!-- /.post -->
               </div>
-              <!-- /.tab-pane -->
-              <div class="tab-pane" id="timeline">
-                <!-- The timeline -->
-                <ul class="timeline timeline-inverse">
-                  <!-- timeline time label -->
-                  <li class="time-label">
-                        <span class="bg-red">
-                          10 Feb. 2014
-                        </span>
-                  </li>
-                  <!-- /.timeline-label -->
-                  <!-- timeline item -->
-                  <li>
-                    <i class="fa fa-envelope bg-blue"></i>
-
-                    <div class="timeline-item">
-                      <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
-
-                      <h3 class="timeline-header"><a href="#">Support Team</a> sent you an email</h3>
-
-                      <div class="timeline-body">
-                        Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
-                        weebly ning heekya handango imeem plugg dopplr jibjab, movity
-                        jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
-                        quora plaxo ideeli hulu weebly balihoo...
-                      </div>
-                      <div class="timeline-footer">
-                        <a class="btn btn-primary btn-xs">Read more</a>
-                        <a class="btn btn-danger btn-xs">Delete</a>
-                      </div>
-                    </div>
-                  </li>
-                  <!-- END timeline item -->
-                  <!-- timeline item -->
-                  <li>
-                    <i class="fa fa-user bg-aqua"></i>
-
-                    <div class="timeline-item">
-                      <span class="time"><i class="fa fa-clock-o"></i> 5 mins ago</span>
-
-                      <h3 class="timeline-header no-border"><a href="#">Sarah Young</a> accepted your friend request
-                      </h3>
-                    </div>
-                  </li>
-                  <!-- END timeline item -->
-                  <!-- timeline item -->
-                  <li>
-                    <i class="fa fa-comments bg-yellow"></i>
-
-                    <div class="timeline-item">
-                      <span class="time"><i class="fa fa-clock-o"></i> 27 mins ago</span>
-
-                      <h3 class="timeline-header"><a href="#">Jay White</a> commented on your post</h3>
-
-                      <div class="timeline-body">
-                        Take me to your leader!
-                        Switzerland is small and neutral!
-                        We are more like Germany, ambitious and misunderstood!
-                      </div>
-                      <div class="timeline-footer">
-                        <a class="btn btn-warning btn-flat btn-xs">View comment</a>
-                      </div>
-                    </div>
-                  </li>
-                  <!-- END timeline item -->
-                  <!-- timeline time label -->
-                  <li class="time-label">
-                        <span class="bg-green">
-                          3 Jan. 2014
-                        </span>
-                  </li>
-                  <!-- /.timeline-label -->
-                  <!-- timeline item -->
-                  <li>
-                    <i class="fa fa-camera bg-purple"></i>
-
-                    <div class="timeline-item">
-                      <span class="time"><i class="fa fa-clock-o"></i> 2 days ago</span>
-
-                      <h3 class="timeline-header"><a href="#">Mina Lee</a> uploaded new photos</h3>
-
-                      <div class="timeline-body">
-                        <img src="http://placehold.it/150x100" alt="..." class="margin">
-                        <img src="http://placehold.it/150x100" alt="..." class="margin">
-                        <img src="http://placehold.it/150x100" alt="..." class="margin">
-                        <img src="http://placehold.it/150x100" alt="..." class="margin">
-                      </div>
-                    </div>
-                  </li>
-                  <!-- END timeline item -->
-                  <li>
-                    <i class="fa fa-clock-o bg-gray"></i>
-                  </li>
-                </ul>
-              </div>
+              
               <!-- /.tab-pane -->
 
               <div class="tab-pane" id="settings">
-                <form class="form-horizontal">
+                <form method="post" class="form-horizontal" @if($user->type == 1) action="/alunos/{{$user->aluno()->value('id')}}" @else action="/professors/{{$user->professor()->value('id')}}" @endif >
+                  {{ method_field('PATCH') }}
+                  {{ csrf_field() }}
                   <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">Name</label>
+                    <label for="name" class="col-sm-2 control-label">Name</label>
 
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputName" placeholder="{{Auth::user()->name}}">
+                      <input type="text" class="form-control" name="name" value="{{$user->name}}"/>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+                    <label for="email" class="col-sm-2 control-label">Email</label>
 
                     <div class="col-sm-10">
-                      <input type="email" class="form-control" id="inputEmail" placeholder="{{Auth::user()->email}}">
+                      <input type="email" class="form-control" name="email" value="{{$user->email}}"/>
                     </div>
                   </div>
-                  @if(Auth::user()->type == 1)
+                  @if($user->type == 1)
                     <div class="form-group">
-                      <label for="inputMatricula" class="col-sm-2 control-label">Matrícula</label>
+                      <label for="matricula" class="col-sm-2 control-label">Matrícula</label>
 
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputMatricula" placeholder="">
+                        <input type="text" class="form-control" name="matricula" @if($user->aluno()->value('matricula') == $user->id) value="" @else value="{{$user->aluno()->value('matricula')}}" @endif />
                       </div>
                     </div>
                     <div class="form-group">
-                      <label for="inputCurso" class="col-sm-2 control-label">Curso</label>
+                      <label for="curso" class="col-sm-2 control-label">Curso</label>
                       <div class="col-sm-10">
-                        <select class="form-control" id="inputCurso">
+                        <select class="form-control" name="curso">
+                          <option value="" disabled selected>Select your option</option>
                           <option value="Sistema de Informação">Sistema de Informação</option>
                           <option value="Engenharia Elétrica">Engenharia Elétrica</option>
                           <option value="Engenharia de Produção">Engenharia de Produção</option>
@@ -320,16 +236,17 @@
                     </div>
                   @else
                     <div class="form-group">
-                      <label for="inputRegistro" class="col-sm-2 control-label">Registro</label>
+                      <label for="registro" class="col-sm-2 control-label">Registro</label>
 
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputRegistro" placeholder="">
+                        <input type="text" class="form-control" name="registro" value="{{$user->professor()->value('registro')}}" />
                       </div>
                     </div>
                     <div class="form-group">
-                      <label for="inputDep" class="col-sm-2 control-label">Departamento</label>
+                      <label for="departamento" class="col-sm-2 control-label">Departamento</label>
                       <div class="col-sm-10">
-                        <select class="form-control" id="inputDep">
+                        <select class="form-control" name="departamento">
+                          <option value="" disabled selected>Select your option</option>
                           <option value="DECEA">DECEA</option>
                           <option value="DECSI">DECSI</option>
                           <option value="DEENP">DEENP</option>
@@ -339,19 +256,52 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <label for="inputArea" class="col-sm-2 control-label">Área</label>
+                      <label for="area" class="col-sm-2 control-label">Área</label>
 
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputArea" placeholder="">
+                        <input type="text" class="form-control" name="area" value="{{$user->professor()->value('area')}}" />
                       </div>
                     </div>
                   @endif
                   <div class="form-group">
-                      <label for="inputLattes" class="col-sm-2 control-label">Lattes</label>
+                      <label for="lattes" class="col-sm-2 control-label">Lattes</label>
 
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputLattes" placeholder="http://...">
+                        <input type="text" class="form-control" name="lattes" placeholder="http://..." />
                       </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                      <button type="submit" class="btn btn-danger">Submit</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+              <div class="tab-pane" id="password">
+                <form method="post" class="form-horizontal" @if($user->type == 1) action="/alunos/{{$user->aluno()->value('id')}}" @else action="/professors/{{$user->professor()->value('id')}}" @endif >
+                  {{ method_field('PATCH') }}
+                  {{ csrf_field() }}
+                  <div class="form-group">
+                    <label for="senha-old" class="col-sm-2 control-label">Senha</label>
+
+                    <div class="col-sm-10">
+                      <input type="password" class="form-control" name="current-password" />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="senha-new" class="col-sm-2 control-label">Nova Senha</label>
+
+                    <div class="col-sm-10">
+                      <input type="password" class="form-control" name="password" />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="senha-new-rpt" class="col-sm-2 control-label">Repetir Senha</label>
+
+                    <div class="col-sm-10">
+                      <input type="password" class="form-control" name="password_confirmation" />
+                    </div>
                   </div>
                   <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">

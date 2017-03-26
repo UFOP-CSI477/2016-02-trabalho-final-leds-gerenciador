@@ -22,6 +22,9 @@ Route::resource('/equipe', 'EquipeController');
 Route::get('/perfil', 'UserController@index');
 Route::resource('membro', 'MembroController');
 Route::resource('livro', 'LivroController');
+Route::resource('professors', 'ProfessorController');
+Route::resource('alunos', 'AlunoController');
+
 Route::resource('biblioteca', 'BibliotecaController');
 Route::get('test', 'TestController@index');
 Auth::routes();

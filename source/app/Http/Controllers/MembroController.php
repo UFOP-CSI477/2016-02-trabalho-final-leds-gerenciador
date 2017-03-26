@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 use App\User;
+use App\Professor;
+use App\Aluno;
 use App\Aviso;
+use DB;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -53,12 +56,21 @@ protected function validator(array $data)
  public function store(Request $request)
  {
    $dados = ($request->all());
+   
    if($dados['name'] == '' || $dados['email'] == '' || $dados['password'] == ''){
         session()->flash('error', 'Favor preenxer todos os campos');
      return redirect('/membro/create');
    }
+   
    $dados["password"] = bcrypt($dados["password"]);
-   User::create($dados);
+   
+   $new = User::create($dados);
+   
+   if($dados['type'] == 1){
+    Aluno::create(array('user_id' => $new['id'], 'matricula' => $new['id'], 'curso' => 'Curso'));
+   }else{
+    Professor::create(array('user_id' => $new['id'], 'registro' => $new['id'], 'departamento' => 'departamento', 'area' => 'area'));
+   }
    return redirect('/');
  }
 }

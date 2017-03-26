@@ -34,9 +34,17 @@ class CreateUsersTable extends Migration
           'email' => 'admin@admin.com',
           'type' => '3',
           'password' => bcrypt('admin')
+          )
+        );
 
-      )
-  );
+        DB::table('professors')->insert(
+          array(
+          'user_id' => '1',
+          'registro' => '1',
+          'departamento' => 'Departamento',
+          'area' => 'Area'
+          )
+        );
     }
 
     /**
