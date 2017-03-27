@@ -14,7 +14,8 @@ class AlunoProfProjetoController extends Controller
      */
     public function index()
     {
-        //
+  
+          return view('projetos.index');
     }
 
     /**

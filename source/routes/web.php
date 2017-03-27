@@ -20,7 +20,10 @@ Route::get('/referencias', function () {
 Route::get('/', 'AvisoController@index');
 Route::resource('/equipe', 'EquipeController');
 Route::get('/perfil', 'UserController@index');
+Route::get('/projetos', 'AlunoProfProjetoController@index');
 Route::resource('membro', 'MembroController');
+Route::resource('projeto', 'ProjetoController');
+Route::resource('aviso', 'AvisoController');
 Route::resource('livro', 'LivroController');
 Route::resource('professors', 'ProfessorController');
 Route::resource('alunos', 'AlunoController');

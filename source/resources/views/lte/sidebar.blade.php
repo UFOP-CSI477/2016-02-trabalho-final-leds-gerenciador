@@ -16,16 +16,6 @@
             </div>
         </div>
 
-        <!-- search form (Optional)
-        <form action="#" method="get" class="sidebar-form">
-            <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="Search..."/>
-                <span class="input-group-btn">
-                    <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-                </span>
-            </div>
-        </form>
-        <!-- /.search form -->
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
@@ -58,10 +48,10 @@
                 <ul class="treeview-menu">
                     @if (Auth::user()->type > 1)
                       <li><a href="{{url('membro/create')}}"><i class="fa fa-circle-o"></i> Membro</a></li>
-                      <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Projeto</a></li>
+                      <li><a href="{{url('projeto/create')}}"><i class="fa fa-circle-o"></i> Projeto</a></li>
                     @endif
                     <li><a href="{{url('livro/create')}}"><i class="fa fa-circle-o"></i> Livros</a></li>
-                    <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Notícia</a></li>
+                    <li><a href="{{url('aviso/create')}}"><i class="fa fa-circle-o"></i> Notícia</a></li>
                 </ul>
             </li>
 

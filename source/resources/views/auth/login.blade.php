@@ -30,22 +30,22 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
-<body class="hold-transition login-page" style="background-color:#80aaff;">
+<body class="hold-transition login-page" style="background-color:#FFFFFF;">
 <div class="login-box">
   <div class="login-logo">
-    <a href="#"><b>LEDS</b></a>
+    <img src="/images/leds.png"  href="/login" class="user-image" alt="User Image"/>
     <p><h5>Laboratório de Engenharia e Desenvolvimento de Sistemas</h5></p>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Sign in to start your session</p>
+    <p class="login-box-msg">Bem Vindo(a) ao SISLeds</p>
 
     <form action="{{ route('login') }}" method="post" >
       {{ csrf_field() }}
       <div class="form-group has-feedback">
         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             <input type="email" class="form-control" name="email" placeholder="Email">
-            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             @if ($errors->has('email'))
                 <span class="help-block">
                 <strong>{{ $errors->first('email') }}</strong>
@@ -55,8 +55,8 @@
       </div>
       <div class="form-group has-feedback">
         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-            <input type="password" class="form-control" name="password" placeholder="Password">
-            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            <input type="password" class="form-control" name="password" placeholder="Senha">
             @if ($errors->has('password'))
                 <span class="help-block">
                 <strong>{{ $errors->first('password') }}</strong>
@@ -68,33 +68,25 @@
         <div class="col-xs-8">
           <div class="checkbox icheck">
             <label>
-              <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }} > Remember Me
+              <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }} > Lembrar?
             </label>
           </div>
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+          <button type="submit" class="btn btn-success btn-block btn-flat">Logar</button>
         </div>
         <!-- /.col -->
       </div>
     </form>
-    <!--
-    <div class="social-auth-links text-center">
-      <p>- OR -</p>
-      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
-        Facebook</a>
-      <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using
-        Google+</a>
-    </div>
-    <!-- /.social-auth-links -->
 
-    <a href="{{ route('password.request') }}">I forgot my password</a><br>
+
+    <a href="{{ route('password.request') }}">Esqueci minha senha</a><br>
+
     
-    <!-- <a href="register.html" class="text-center">Register a new membership</a> ..>
 
   </div>
-  <!-- /.login-box-body -->
+
 </div>
 <!-- /.login-box -->
 

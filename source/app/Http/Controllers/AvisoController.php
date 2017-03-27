@@ -30,7 +30,7 @@ class AvisoController extends Controller
      */
     public function create()
     {
-        //
+        return view('adicionar.aviso');
     }
 
     /**
@@ -39,10 +39,18 @@ class AvisoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
-    }
+
+       public function store(Request $request)
+       {
+         $dados = ($request->all());
+
+         if($dados['titulo'] == '' || $dados['descricao'] == ''){
+              session()->flash('error', 'Favor preenxer todos os campos');
+           return redirect('/livro/create');
+         }
+         Aviso::create($dados);
+         return redirect('/noticias');
+       }
 
     /**
      * Display the specified resource.

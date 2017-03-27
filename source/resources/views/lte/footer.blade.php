@@ -4,5 +4,5 @@
         Laboratório de Engenharia e Desenvolvimento de Sistemas
     </div>
     <!-- Default to the left -->
-    <strong>Copyright © 2015 <a href="#">Company</a>.</strong> All rights reserved.
+    <strong>Todos direito reservados </strong>
 </footer>

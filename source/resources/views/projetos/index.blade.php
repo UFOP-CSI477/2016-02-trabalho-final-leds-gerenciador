@@ -1,11 +1,39 @@
 @extends('admin_template')
-<?php 
-    View::share('page_title', 'Projetos'); 
+<?php
+    View::share('page_title', 'Projetos');
 ?>
 @section('content')
     <div class='row'>
-        
-        <div class="col-md-6">
+      <div class="col-md-12 col-sm-6">
+        @if($total < 15)
+            <div class="info-box bg-yellow">
+
+        @elseif($total < 7)
+          <div class="info-box bg-yellow">
+            @else
+    <div class="info-box bg-aqua">
+          @endif
+
+          <span class="info-box-icon"><i class="fa fa-calendar"></i></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text">Tempo do Projeto</span>
+            <span class="info-box-number">Variavel com numero de dias</span>
+
+            <div class="progress">
+              <div class="progress-bar" style="width: 70%"></div>
+            </div>
+                <span class="progress-description">
+                  Faltam: X dias para fim do projeto
+                </span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+      </div>
+    </div>
+        <div class='row'>
+        <div class="col-md-12">
           <!-- Box Comment -->
           <div class="box box-widget">
             <div class="box-header with-border">
@@ -38,7 +66,7 @@
           </div>
           <!-- /.box -->
         </div>
-        
+
 
 
     </div><!-- /.row -->

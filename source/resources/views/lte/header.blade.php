@@ -22,21 +22,15 @@
                     <!-- Menu toggle button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-bell-o"></i>
-                        <span class="label label-warning">10</span>
+
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="header">You have 10 notifications</li>
+
                         <li>
                             <!-- Inner Menu: contains the notifications -->
-                            <ul class="menu">
-                                <li><!-- start notification -->
-                                    <a href="#">
-                                        <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                                    </a>
-                                </li><!-- end notification -->
-                            </ul>
+
                         </li>
-                        <li class="footer"><a href="/">View all</a></li>
+                        <li class="footer"><a href="/noticias">Ver noticias</a></li>
                     </ul>
                 </li>
                 <!-- Tasks Menu -->
@@ -55,29 +49,27 @@
                             <img src="/images/{{ Auth::user()->imagem }}" class="img-circle" alt="User Image" />
                             <p>
                                 {{ Auth::user()->name }} - @if(Auth::user()->type == 1) Aluno @else Professor @endif
-                                <small>Member since Nov. 2012</small>
+
                             </p>
                         </li>
                         <!-- Menu Body -->
                         <li class="user-body">
                             <div class="col-xs-4 text-center">
-                                <a href="#">Followers</a>
+                                <a href="/perfil">Perfil</a>
                             </div>
                             <div class="col-xs-4 text-center">
-                                <a href="#">Sales</a>
+                                <a href="/biblioteca">Biblioteca</a>
                             </div>
                             <div class="col-xs-4 text-center">
-                                <a href="#">Friends</a>
+                                <a href="/projetos">Projetos</a>
                             </div>
                         </li>
                         <!-- Menu Footer-->
                         <li class="user-footer">
-                            <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">Profile</a>
-                            </div>
+                        
                             <div class="pull-right">
-                                <a href="{{ route('logout') }}" 
-                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();" 
+                                <a href="{{ route('logout') }}"
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                                     class="btn btn-default btn-flat">
                                     Sign out
                                 </a>

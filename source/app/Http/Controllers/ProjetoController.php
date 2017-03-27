@@ -1,85 +1,78 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Projeto;
+use App\User;
+use App\Professor;
+use App\Aluno;
+use DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class ProjetoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+  /**
+ * Create a new controller instance.
+ *
+ * @return void
+ */
+ public function __construct(){
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+     $this->middleware('auth');
+ }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+ public function index(){
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Projeto  $projeto
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Projeto $projeto)
-    {
-        //
-    }
+     return view('adicionar.projeto');
+ }
+/**
+ * Get a validator for an incoming registration request.
+ *
+ * @param  array  $data
+ * @return \Illuminate\Contracts\Validation\Validator
+ */
+protected function validator(array $data)
+{
+    return Validator::make($data, [
+        'name' => 'required|max:255',
+        'email' => 'required|email|max:255|unique:users',
+        'password' => 'required|min:6|confirmed',
+    ]);
+}
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Projeto  $projeto
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Projeto $projeto)
-    {
-        //
-    }
+/**
+ * Create a new user instance after a valid registration.
+ *
+ * @param  array  $data
+ * @return User
+ */
+ public function create()
+ {
+    $professores = Professor::all();
+    $alunos = Aluno::all();
+    return view('adicionar.projeto')
+    ->with("alunos", $alunos)
+    ->with("professores",$professores);
+ }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Projeto  $projeto
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Projeto $projeto)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Projeto  $projeto
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Projeto $projeto)
-    {
-        //
-    }
+ public function store(Request $request)
+ {
+   $dados = ($request->all());
+
+   if($dados['nome'] == '' || $dados['descricao'] == '' || $dados['inicio'] == '' || $dados['fim'] == ''){
+        session()->flash('error', 'Favor preenxer todos os campos');
+     return redirect('/projeto/create');
+   }
+
+   $new = User::create($dados);
+
+   if($dados['type'] == 1){
+    Aluno::create(array('user_id' => $new['id'], 'matricula' => $new['id'], 'curso' => 'Curso'));
+   }else{
+    Professor::create(array('user_id' => $new['id'], 'registro' => $new['id'], 'departamento' => 'departamento', 'area' => 'area'));
+   }
+   return redirect('/');
+ }
 }
