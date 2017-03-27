@@ -19,7 +19,11 @@
               <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome">
             </div>
             <br>
-
+            <div class="input-group">
+              <span class="input-group-addon">Area *:</span>
+              <input type="text" class="form-control" name="area" id="area" placeholder="are">
+            </div>
+            <br>
             <div class="input-group">
               <span class="input-group-addon">Descricao *:</span>
               <input type="text" class="form-control" name="descricao" id="descricao" placeholder="descricao">
@@ -27,12 +31,12 @@
               <br>
               <label> Professores: </label>
               @foreach($professores as $professor)
-              <input class="field" name="professor_id" type="checkbox" value="{{$professor->id}}">{{$professor->nome}}
+              <input class="field" name="prof_list[]" type="checkbox" value="{{$professor->id}}">{{$professor->user()->value('name')}}
               @endforeach
               <br>
               <label> Alunos: </label>
               @foreach($alunos as $aluno)
-              <input class="field" name="aluno_id" type="checkbox" value="{{$aluno->id}}">{{$aluno->nome}}
+              <input class="field" name="aluno_list[]" type="checkbox" value="{{$aluno->id}}">{{$aluno->user()->value('name')}}
               @endforeach
 
 

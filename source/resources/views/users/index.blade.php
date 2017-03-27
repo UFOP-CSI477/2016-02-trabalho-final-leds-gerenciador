@@ -29,10 +29,10 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <strong><i class="fa fa-book margin-r-5"></i> Education</strong>
+              <strong><i class="fa fa-book margin-r-5"></i> Formação</strong>
 
               <p class="text-muted">
-                B.S. in Computer Science from the University of Tennessee at Knoxville
+              {{$user->aluno()->value('curso')}}
               </p>
 
               @if($user->type != 1)
@@ -45,13 +45,13 @@
               @endif
               <hr>
 
-              <strong><i class="fa fa-book margin-r-5"></i><a href=http://{{$user->lattes}}> Lattes</a></strong>
+              <strong><i class="fa fa-book margin-r-5"></i><a href= "{{$user->lattes}}"> Lattes</a></strong>
 
               <hr>
 
-              <strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
+              <strong><i class="fa fa-map-marker margin-r-5"></i> Localização</strong>
 
-              <p class="text-muted">Malibu, California</p>
+              <p class="text-muted">LEDS, UFOP Campus ICEA</p>
 
               <hr>
 
@@ -192,7 +192,7 @@
                 </div>
                 <!-- /.post -->
               </div>
-              
+
               <!-- /.tab-pane -->
 
               <div class="tab-pane" id="settings">

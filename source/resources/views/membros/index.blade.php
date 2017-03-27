@@ -19,23 +19,26 @@
                                                   <th>Tipo</th>
                                                 <th>Curso/Departamento</th>
                                                 <th> Area </th>
+                                                <th> Lattes </th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                           @foreach($alunos as $aluno)
                                             <tr>
-                                                <td>$aluno->nome</td>
+                                                <td>{{$aluno->user()->value('name')}}</td>
                                                 <td><span class="label label-warning">ALUNO</span></td>
-                                                <td>$aluno->curso</td>
+                                                <td>{{$aluno->curso}}</td>
                                                 <td> - </td>
+                                                <td><a href="{{$aluno->user()->value('lattes')}}"><i class="fa fa-newspaper-o"></i><span>Link</span></a></td>
                                             </tr>
                                             @endforeach
                                             @foreach($professores as $prof)
                                               <tr>
-                                                  <td>$prof->nome</td>
+                                                  <td>{{$prof->user()->value('name')}}</td>
                                                   <td><span class="label label-success">PROFESSOR</span></td>
-                                                  <td>$prof->departamento</td>
-                                                  <td> $prof->area </td>
+                                                  <td>{{$prof->departamento}}</td>
+                                                  <td> {{$prof->area}} </td>
+                                                  <td><a href="{{$prof->user()->value('lattes')}}"><i class="fa fa-newspaper-o"></i><span>Link</span></a></td>
                                               </tr>
                                               @endforeach
                                         </tbody>
@@ -45,6 +48,7 @@
                                               <th>Tipo</th>
                                               <th>Curso/Departamento</th>
                                               <th> Area </th>
+                                              <th> Lattes </th>
                                             </tr>
                                         </tfoot>
                                     </table>

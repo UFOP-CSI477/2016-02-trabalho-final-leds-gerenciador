@@ -32,7 +32,8 @@
 <!-- Se o lattes estiver vazio a gente pode desativar esse botao -->
 
             <li><a href=" @if(Auth::user()->type ==  2)
-                {{ url('/perfil') }}
+
+                {{ url(Auth::user()->lattes) }}
                 @endif"
               ><i class="fa fa-institution"></i><span>Lattes</span></a></li>
 
