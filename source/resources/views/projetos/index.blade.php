@@ -3,11 +3,13 @@
     View::share('page_title', 'Projetos');
 ?>
 @section('content')
+@foreach($dados as $index => $dado)
+
     <div class='row'>
       <div class="col-md-12 col-sm-6">
-        @if($total < 20)
+        @if($calculos[$index]['sobrando'] < 20 && $calculos[$index]['sobrando'] > 7)
             <div class="info-box bg-yellow">
-        @elseif($total < 7)
+        @elseif($calculos[$index]['sobrando'] < 7)
           <div class="info-box bg-red">
         @else
             <div class="info-box bg-aqua">
@@ -17,13 +19,13 @@
 
           <div class="info-box-content">
             <span class="info-box-text">Tempo Total do Projeto</span>
-            <span class="info-box-number">Dias: {{$total}}</span>
+            <span class="info-box-number">Dias: {{$calculos[$index]['total']}}</span>
 
             <div class="progress">
-              <div class="progress-bar" style="width: {{$porcentagem}}%"></div>
+              <div class="progress-bar" style="width: {{$calculos[$index]['porcentagem']}}%"></div>
             </div>
                 <span class="progress-description">
-                  Faltam: {{$sobrando}} dias para fim do projeto
+                  Faltam: {{$calculos[$index]['sobrando']}} dias para fim do projeto
                 </span>
           </div>
           <!-- /.info-box-content -->
@@ -37,8 +39,8 @@
           <div class="box box-widget">
             <div class="box-header with-border">
               <div class="user-block">
-                <span class="username">{{$dados->nome}}</a></span>
-                <span class="description">Data inicial: {{ $fdate }}</span>
+                <span class="username">{{ $dado->nome }}</a></span>
+                <span class="description">Data inicial: {{ $dado->inicio }}</span>
               </div>
               <!-- /.user-block -->
               <div class="box-tools">
@@ -50,11 +52,11 @@
             <!-- /.box-header -->
             <div class="box-body">
               <!-- post text -->
-               <h1> Descricao do projeto </h1>
-              <b> Area do projeto: {{$dados->area}} </b>
+               <h3> Descricao do projeto: </h3>
+              <b> Area do projeto: {{$dado->area}} </b>
 
 
-              <p>Descricao: {{$dados->descricao}} </p>
+              <p>Descricao: {{$dado->descricao}} </p>
             </div>
             <!-- /.box-footer -->
           </div>
@@ -64,4 +66,5 @@
 
 
     </div><!-- /.row -->
+    @endforeach
 @endsection

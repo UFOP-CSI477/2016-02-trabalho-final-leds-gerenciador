@@ -32,20 +32,22 @@ class AlunoProfProjetoController extends Controller
 
       if(Auth::user()->type == 2){
 
-         $projeto = Aluno_Prof_Projeto::where('professor_id', Auth::user()->professor()->value('id'))->value('projeto_id');
+         $projetos = Aluno_Prof_Projeto::where('professor_id', Auth::user()->professor()->value('id'))->get();
 
     }
     elseif(Auth::user()->type == 1){
-         $projeto = Aluno_Prof_Projeto::where('aluno_id', Auth::user()->aluno()->value('id'))->value('projeto_id');
+         $projetos = Aluno_Prof_Projeto::where('aluno_id', Auth::user()->aluno()->value('id'))->get();
     }else{
 
     }
+    $calculos = array();
+    $dados = array();
+foreach ($projetos as $index => $projeto) {
 
-     $dados = Projeto::find($projeto);
+     $dados[$index] = Projeto::find($projeto->projeto_id);
 
-
-     $fdate = $dados->inicio;
-     $tdate = $dados->fim;
+     $fdate = $dados[$index]->inicio;
+     $tdate = $dados[$index]->fim;
      $nowDate =  Carbon\Carbon::today()->format('Y-m-d');
 
      $datetime1 = new DateTime($fdate);
@@ -58,16 +60,21 @@ class AlunoProfProjetoController extends Controller
 
      $porcentagem = (100*($total - $sobrando))/$total;
 
+      $calculos[$index]['total'] = $total;
+      $calculos[$index]['sobrando']=$sobrando;
+      $calculos[$index]['fdate']=$fdate;
+      $calculos[$index]['porcentagem']=$porcentagem;
+
+
+}
 
 
 
           return view('projetos.index')
-          ->with('total', $total)
-          ->with('fdate',  $fdate )
+          ->with('calculos', $calculos)
           ->with('dados',  $dados )
-          ->with('porcentagem', $porcentagem)
-          ->with('sobrando', $sobrando)
-          ->with('dados', $dados);
+          ->with('dados', $dados)
+          ->with('projetos', $projetos);
     }
 
     /**
